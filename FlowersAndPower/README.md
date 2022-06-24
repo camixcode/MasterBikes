@@ -1,2 +1,0 @@
-# FlowersAndPower
-Proyecto Semestral
