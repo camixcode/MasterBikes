@@ -75,6 +75,9 @@ def P_Arriendo(request):
 def Servicios_M(request):
     return render(request, 'core/Servicios_M.html')
 
+def P_Promociones(request):
+    return render(request, 'core/P_Promociones.html')    
+
 def Contacto(request):
     return render(request, 'core/Contacto.html')
 
