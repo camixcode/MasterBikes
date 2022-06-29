@@ -69,6 +69,12 @@ def limpiar_carrito(request):
 def Arbusto(request):
     return render(request, 'core/Arbusto.html')
 
+def P_Arriendo(request):
+    return render(request, 'core/P_Arriendo.html')
+
+def Servicios_M(request):
+    return render(request, 'core/Servicios_M.html')
+
 def Contacto(request):
     return render(request, 'core/Contacto.html')
 

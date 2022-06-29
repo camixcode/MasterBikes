@@ -11,7 +11,7 @@ from .views import Arbusto, agregar_producto, eliminar_producto, registro,home, 
     Categoria1, F_Crear_Cuenta,form_mod_usuario,Nosotros,HistoricoCompra,index_home,InicioSesion1,\
     limpiar_carrito,listado_producto, Paypal,PerfilProducto,Producto1,Seguimiento,Tierra,\
     Macetero,index_homeOG, form_usuario,restar_producto, form_producto, Carrito,\
-    form_mod_producto,form_borrar_producto , listado_usuario, form_borrar_usuario
+    form_mod_producto,form_borrar_producto , listado_usuario, form_borrar_usuario,P_Arriendo,Servicios_M
 # ,NavBar
 
 
@@ -27,7 +27,9 @@ urlpatterns = [
     path('form_usuario/', form_usuario, name="form_usuario"),
     path('form_producto/', form_producto, name="form_producto"),
     path('login',Carrito),
-    path('HistoricoCompra/', HistoricoCompra, name="HistoricoCompra"),
+    path('P_Arriendo/', P_Arriendo, name="P_Arriendo"),
+    path('Servicios_M/', Servicios_M, name="Servicios_M"),
+    path('P_Arriendo/', HistoricoCompra, name="HistoricoCompra"),
     #path('Home/', index_home, name="Home"),
     path('InicioSesion1/', InicioSesion1, name="InicioSesion1"),
     path('listado_producto/', listado_producto, name="listado_producto"),
