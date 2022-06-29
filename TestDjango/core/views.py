@@ -2,7 +2,7 @@ from ast import Try
 from distutils.command import clean
 from email import message
 from itertools import product
-from math import prod
+#from math import prod
 from pyexpat.errors import messages
 from re import U
 from sqlite3 import DateFromTicks
