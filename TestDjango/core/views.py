@@ -91,6 +91,9 @@ def F_Crear_Cuenta(request):
 def form_mod_usuario(request):
     return render(request, 'core/form_mod_usuario.html')
 
+def Admin_E_Servicios(request):
+    return render(request, 'core/Admin_E_Servicios.html')
+
 def form_borrar_producto(request,id):
     producto = Producto.objects.get(idProducto=id)
     producto.delete()
