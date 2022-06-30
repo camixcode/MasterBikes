@@ -255,5 +255,13 @@ def form_arriendo(request):
     datos = {
         'form': Arriendo()
     }
-    
+    if request.method == 'POST':
+
+        formmulario = Arriendo(request.POST,files=request.FILES)
+
+        if formmulario.is_valid():
+            formmulario.save()
+            datos['mensaje'] = "Arriendo registrado correctamente"
+        else:
+            datos['form'] = formmulario
     return render(request, 'core/form_arriendo.html',datos)                          

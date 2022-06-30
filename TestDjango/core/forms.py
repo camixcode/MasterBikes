@@ -1,6 +1,7 @@
 
 from dataclasses import fields
 from re import M
+from tkinter import Widget
 from django import forms
 from django.forms import ModelForm
 from .models import Producto, Usuario,Arriendo,Reparacion
@@ -38,12 +39,17 @@ class CrearCuentaAdmin (UserCreationForm):
     model = User
     fields=['username',"first_name","last_name","email","is_superuser","password1","password2"]
 
-class Arriendo(forms.ModelForm):
+class Arriendo(ModelForm):
     class Meta:
         model = Arriendo
+
         fields =['tipoArriendo','tipoBicicleta','fechaRetiro','abonoUSD','valorArriendo','cantidad','nombreArrendatario','rutArrendatario','mailArrendatario']    
 
+Widget={
+    "fechaRetiro":forms.SelectDateWidget()
+}
 class Reparacion(ModelForm):
     class Meta:
         model = Reparacion
         fields =['tipoReparacion','detalleReparacion','fechaReparacion','valorReparacion']
+
