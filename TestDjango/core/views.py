@@ -22,7 +22,7 @@ from django.contrib.auth.models import User
 
 
 
-from . models import Producto,Usuario
+from . models import Arriendo, Producto,Usuario
 
 
 # Create your views here.
@@ -255,3 +255,15 @@ def registro (request):
 #def NavBar(request):
  #   return render(request, 'core/NavBar.html')  
      
+def form_arriendo(request):
+    datos = {
+        'form': Arriendo
+    }
+    if request.method == 'POST':
+
+        formmulario = Arriendo(request.POST)
+
+        if formmulario.is_valid():
+            formmulario.save()
+            datos['mensaje'] = "Arriendo registrado correctamente"
+    return render(request, 'core/form_arriendo.html',datos)                          
