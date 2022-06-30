@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'core/css/F_C_estilos.css'%}">
+
+    <!--Nav -->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Pagina de Inicio</title>
+    <!--<title>FLOWERSANDPOWER</title>-->
+    <link rel="stylesheet" href="{% static 'core/css/stylos.css'%}">
+
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap.min.js">
+    <link rel="stylesheet" href="min.css">
+    <link rel="stylesheet" href="popper.min.js">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Arriendo</title>
+</head>
+<body>
+<!--<h1>nav FLOWERSANDPOWER</h1>-->
+{%block content %}
+<div>
+    {% include "Nav.html " %}
+</div>
+{%endblock%}
+<!-- partial:index.partial.html 
+
+
+
+    <div class="loader" style="display: none;">
+        <img src="images/Rolling-1s-200px.svg" style="max-width:150px;">
+    </div>
+    <div class="main-form mb-3">
+        <h class="text-center pt-3">
+
+
+        </h>
+        <div class="progress rounded-0" style="max-width:500px; margin:0 auto; height:7px;">
+            <div class="progress-bar" role="progressbar" style="width: 33.33333%;" aria-valuenow="33.33333"
+                aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+-->
+        <!-- Step 1 -->
+    <div class="container">    
+        {% load crispy_forms_tags %}
+        <form method="post" id="Arriendo" enctype="multipart/form-data">
+            <div class="row info-section py-3">
+                <div class="col-sm-3 text-center">
+                    <span class="iconify" aria-hidden="true"><i class="fas fa-home"></i></span>
+                </div>
+                    <div class="col-sm-9 pl-sm-0">
+                        <h3 class="font-weight-light">Registrar Arriendo Bicicleta</h3>
+                        <p id="description">Los Campos con (*) Son Obligatorios.</p>
+                    </div>
+            </div>
+           
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-12 col-md-6 mb-2">
+                                {% csrf_token %}
+                                {{form | crispy}} 
+                                <hr>   
+                            <input type="submit" class="btn btn-danger" value="enviar">
+                            &nbsp;
+                            <input type="reset" class="btn btn-danger" value="limpiar">
+
+                            </div>
+
+                        </div>
+                    </div>
+                 
+                
+                    {{mensaje}}
+            
+                </div>
+                  
+            </form>
+
+    </div>
+
+    <!--- Footer-->
+
+    <div>
+        {% include "Footer.html" %}
+    </div>
+</body>
+</html>

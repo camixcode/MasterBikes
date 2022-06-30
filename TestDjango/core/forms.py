@@ -16,7 +16,7 @@ class RegistrarProducto(ModelForm):
 
     class Meta:
         model = Producto
-        fields =['idProducto','nombreProducto','descripcionProducto','precioProducto','imagen','categoria']
+        fields =['idProducto','nombreProducto','descripcionProducto','precioProducto','imagen','categoria','stock']
 
     def clean(self):
         print(self.cleaned_data)
@@ -38,7 +38,7 @@ class CrearCuentaAdmin (UserCreationForm):
     model = User
     fields=['username',"first_name","last_name","email","is_superuser","password1","password2"]
 
-class Arriendo(ModelForm):
+class Arriendo(forms.ModelForm):
     class Meta:
         model = Arriendo
         fields =['tipoArriendo','tipoBicicleta','fechaRetiro','abonoUSD','valorArriendo','cantidad','nombreArrendatario','rutArrendatario','mailArrendatario']    
@@ -46,4 +46,4 @@ class Arriendo(ModelForm):
 class Reparacion(ModelForm):
     class Meta:
         model = Reparacion
-        fields =['tipoReparacion','detalleReparacion','valorReparacion']
+        fields =['tipoReparacion','detalleReparacion','fechaReparacion','valorReparacion']

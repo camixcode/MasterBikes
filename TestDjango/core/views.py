@@ -13,16 +13,12 @@ from xml.dom.minidom import Document
 from xml.parsers.expat import model
 import django
 from django.shortcuts import redirect, render
-from core.forms import RegistrarProducto, RegistrarUsuario , CustomerUserCreationForm, ModificarUsuario, CrearCuentaAdmin
+from core.forms import RegistrarProducto, RegistrarUsuario , CustomerUserCreationForm, ModificarUsuario, CrearCuentaAdmin,Arriendo
 from django.contrib.auth import authenticate, login
 from core.Carrito import Carrito
 from django.contrib import messages
 from django.contrib.auth.models import User 
-
-
-
-
-from . models import Arriendo, Producto,Usuario
+from . models import Producto,Usuario
 
 
 # Create your views here.
@@ -257,13 +253,7 @@ def registro (request):
      
 def form_arriendo(request):
     datos = {
-        'form': Arriendo
+        'form': Arriendo()
     }
-    if request.method == 'POST':
-
-        formmulario = Arriendo(request.POST)
-
-        if formmulario.is_valid():
-            formmulario.save()
-            datos['mensaje'] = "Arriendo registrado correctamente"
+    
     return render(request, 'core/form_arriendo.html',datos)                          
