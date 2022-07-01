@@ -4,7 +4,6 @@ from distutils.command.upload import upload
 from django.db import models
 
 # Create your models here.
-
 class Categoria(models.Model):
     idCategoria = models.IntegerField(primary_key=True, verbose_name='Id de categoria')
     nombreCategoria = models.CharField(max_length=50,verbose_name='Nombre de la categoria')
@@ -56,6 +55,7 @@ class Arriendo(models.Model):
     fechaRetiro=models.DateField(verbose_name='Fecha retiro')
     fechaEntrega=models.DateField(null= True,default=None,verbose_name='Fecha entrega')
     abonoUSD=models.IntegerField(verbose_name='Abono USD')
+    abonoUSDvalorArriendo=models.IntegerField(verbose_name='AbonoUSD valor arriendo')
     valorArriendo=models.IntegerField(verbose_name='Valor USD')
     cantidad=models.IntegerField(verbose_name='Cantidad')
     nombreArrendatario=models.CharField(max_length=200,verbose_name='Nombre arrendatario')

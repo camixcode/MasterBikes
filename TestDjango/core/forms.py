@@ -52,6 +52,7 @@ class Arriendo(ModelForm):
             'tipoArriendo',
             'tipoBicicleta',
             'fechaRetiro',
+            'abonoUSD'
             'valorArriendo',
             'cantidad',
             'nombreArrendatario',
