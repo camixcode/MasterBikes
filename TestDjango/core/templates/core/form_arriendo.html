@@ -13,8 +13,6 @@
     <title>Pagina de Inicio</title>
     <!--<title>FLOWERSANDPOWER</title>-->
     <link rel="stylesheet" href="{% static 'core/css/stylos.css'%}">
-
-
     <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap.min.js">
     <link rel="stylesheet" href="min.css">
@@ -50,7 +48,7 @@
         <!-- Step 1 -->
     <div class="container">    
         {% load crispy_forms_tags %}
-        <form method="post" id="Arriendo" enctype="multipart/form-data">
+        <form method="post" id="" enctype="multipart/form-data">
             <div class="row info-section py-3">
                 <div class="col-sm-3 text-center">
                     <span class="iconify" aria-hidden="true"><i class="fas fa-home"></i></span>
@@ -65,7 +63,7 @@
                         <div class="form-row">
                             <div class="col-12 col-md-6 mb-2">
                                 {% csrf_token %}
-                                {{form | crispy}} 
+                                {{form }} 
                                 <hr>   
                             <input type="submit" class="btn btn-danger" value="enviar">
                             &nbsp;

@@ -39,15 +39,27 @@ class CrearCuentaAdmin (UserCreationForm):
     model = User
     fields=['username',"first_name","last_name","email","is_superuser","password1","password2"]
 
-class Arriendo(ModelForm):
+class Arriendo(forms.ModelForm):
     class Meta:
         model = Arriendo
+        fields =[
+            'tipoArriendo',
+            'tipoBicicleta',
+            'fechaRetiro',
+            'abonoUSD',
+            'valorArriendo',
+            'cantidad',
+            'nombreArrendatario',
+            'rutArrendatario',
+            'mailArrendatario'
+            ]    
 
-        fields =['tipoArriendo','tipoBicicleta','fechaRetiro','abonoUSD','valorArriendo','cantidad','nombreArrendatario','rutArrendatario','mailArrendatario']    
+class rawArriendo(forms.Form):
+    fechaRetiro=forms.CharField(label='YYYY-MM-DD')
+    abonoUSD= forms.DecimalField(initial=0)
 
-Widget={
-    "fechaRetiro":forms.SelectDateWidget()
-}
+
+
 class Reparacion(ModelForm):
     class Meta:
         model = Reparacion
