@@ -13,12 +13,12 @@ from xml.dom.minidom import Document
 from xml.parsers.expat import model
 import django
 from django.shortcuts import redirect, render
-from core.forms import RegistrarProducto, RegistrarUsuario , CustomerUserCreationForm, ModificarUsuario, CrearCuentaAdmin,Arriendo
+from core.forms import RegistrarProducto, RegistrarUsuario , CustomerUserCreationForm, ModificarUsuario, CrearCuentaAdmin, Arriendo, Reparacion
 from django.contrib.auth import authenticate, login
 from core.Carrito import Carrito
 from django.contrib import messages
 from django.contrib.auth.models import User 
-from . models import Producto,Usuario
+from .models import Producto, Usuario
 
 
 # Create your views here.
@@ -264,4 +264,12 @@ def form_arriendo(request):
             datos['mensaje'] = "Arriendo registrado correctamente"
         else:
             datos['form'] = formmulario
-    return render(request, 'core/form_arriendo.html',datos)                          
+    return render(request, 'core/form_arriendo.html',datos)    
+                          
+
+def form_reparacion(request):
+    datos = {
+        'form': Reparacion
+    }
+    
+    return render(request, 'core/form_reparacion.html',datos)

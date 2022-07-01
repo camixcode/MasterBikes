@@ -63,12 +63,20 @@ class Arriendo(models.Model):
     mailArrendatario=models.CharField(max_length=150,verbose_name='Mail arrendatario')
 
     def __str__(self):
-        return self.tipoArriendo
+        return self.idArriendo
+
+class TypeReparaciones(models.Model):
+    idTipoReparacion=models.AutoField(primary_key=True,verbose_name='Id tipo reparacion')
+    descripReparacion=models.CharField(max_length=100,verbose_name='Descripcion reparacion')
+
+    def __str__(self):
+        return self.descripReparacion        
+
         
 class Reparacion(models.Model):
     idReparacion=models.AutoField(primary_key=True, verbose_name='Id reparacion')
     fechaReparacion=models.DateField(verbose_name='Fecha reparacion')
-    tipoReparacion=models.CharField(max_length=50,verbose_name='Tipo reparacion')
+    tipoReparacion=models.ForeignKey(TypeReparaciones,on_delete=models.CASCADE,verbose_name='Tipo reparacion')
     detalleReparacion=models.TextField(max_length=500,verbose_name='Detalle reparacion')
     valorReparacion=models.IntegerField(verbose_name='Valor reparacion')
     estado=models.CharField(max_length=50,null= True,default=None,verbose_name='Estado')

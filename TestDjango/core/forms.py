@@ -66,4 +66,12 @@ class Arriendo(ModelForm):
 class Reparacion(ModelForm):
     class Meta:
         model = Reparacion
-        fields =['tipoReparacion','detalleReparacion','fechaReparacion','valorReparacion']
+        fields =[
+            'tipoReparacion',
+            'detalleReparacion',
+            'fechaReparacion',
+            'valorReparacion'
+            ]
+        widgets={
+                'fechaReparacion': forms.SelectDateWidget() 
+            }    
