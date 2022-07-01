@@ -1,12 +1,20 @@
 
 from dataclasses import fields
+from pyexpat import model
 from re import M
 from tkinter import Widget
+from xml.dom.minidom import Attr
 from django import forms
 from django.forms import ModelForm
-from .models import Producto, Usuario,Arriendo,Reparacion
+from .models import Producto, Usuario, Arriendo, Reparacion
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+
+TIPO_ARRIENDO_CHOICES = [
+    ('Paseo','Paseo'),
+    ('Fixie','Fixie'),
+    ('Mountain bike','Mountain bike')
+    ]
 
 class RegistrarUsuario(ModelForm):
     class Meta:
@@ -38,9 +46,11 @@ class CrearCuentaAdmin (UserCreationForm):
    class Meta:
     model = User
     fields=['username',"first_name","last_name","email","is_superuser","password1","password2"]
+ 
 
-class Arriendo(forms.ModelForm):
+class Arriendo(ModelForm):  
     class Meta:
+        
         model = Arriendo
         fields =[
             'tipoArriendo',
@@ -52,16 +62,16 @@ class Arriendo(forms.ModelForm):
             'nombreArrendatario',
             'rutArrendatario',
             'mailArrendatario'
-            ]    
-
-class rawArriendo(forms.Form):
-    fechaRetiro=forms.CharField(label='YYYY-MM-DD')
-    abonoUSD= forms.DecimalField(initial=0)
-
+            ]           
+        widgets={
+               
+                'fechaRetiro': forms.SelectDateWidget(),
+                ##'tipoArriendo': forms.CharField(label='Paseo, Fixie ,Mountain bike'),
+                
+            }
 
 
 class Reparacion(ModelForm):
     class Meta:
         model = Reparacion
         fields =['tipoReparacion','detalleReparacion','fechaReparacion','valorReparacion']
-
