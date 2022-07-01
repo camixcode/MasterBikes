@@ -51,8 +51,8 @@ class TypeTipoBicicleta(models.Model):
 
 class Arriendo(models.Model):
     idArriendo=models.AutoField(primary_key=True, verbose_name='Id arriendo')
-    tipoArriendo=models.ForeignKey(TypeTipoArriendo,on_delete=models.CASCADE,verbose_name='Tipo arriendo')
-    tipoBicicleta=models.ForeignKey(TypeTipoBicicleta,on_delete=models.CASCADE,verbose_name='Tipo bicicleta')
+    tipoArriendo=models.CharField(max_length=200,verbose_name='Tipo arriendo')
+    tipoBicicleta=models.CharField(max_length=200,verbose_name='Tipo bicicleta')
     fechaRetiro=models.DateField(verbose_name='Fecha retiro')
     fechaEntrega=models.DateField(null= True,default=None,verbose_name='Fecha entrega')
     abonoUSD=models.IntegerField(verbose_name='Abono USD')
@@ -76,7 +76,7 @@ class TypeReparaciones(models.Model):
 class Reparacion(models.Model):
     idReparacion=models.AutoField(primary_key=True, verbose_name='Id reparacion')
     fechaReparacion=models.DateField(verbose_name='Fecha reparacion')
-    tipoReparacion=models.ForeignKey(TypeReparaciones,on_delete=models.CASCADE,verbose_name='Tipo reparacion')
+    tipoReparacion=models.CharField(max_length=200,verbose_name='Tipo reparacion')
     detalleReparacion=models.TextField(max_length=500,verbose_name='Detalle reparacion')
     valorReparacion=models.IntegerField(verbose_name='Valor reparacion')
     estado=models.CharField(max_length=50,null= True,default=None,verbose_name='Estado')
