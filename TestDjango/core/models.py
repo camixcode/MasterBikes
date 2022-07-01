@@ -1,3 +1,4 @@
+from ast import Delete
 from asyncio.windows_events import NULL
 from distutils.command.upload import upload
 from django.db import models
@@ -33,10 +34,25 @@ class Usuario(models.Model):
     def __str__(self):
         return self.nombreUsuario
 
+class TypeTipoArriendo(models.Model):
+    idTipoArriendo=models.AutoField(primary_key=True,verbose_name='Id tipo arriendo')
+    descripTipoArriendo=models.CharField(max_length=100,verbose_name='Descripcion tipo arriendo')
+
+    def __str__(self):
+        return self.descripTipoArriendo
+
+class TypeTipoBicicleta(models.Model):
+    idTipoBicicleta=models.AutoField(primary_key=True,verbose_name='Id tipo bicicleta')
+    descripTipoBicicleta=models.CharField(max_length=100,verbose_name='Descripcion tipo bicicleta')
+    
+
+    def __str__(self):
+        return self.descripTipoBicicleta        
+
 class Arriendo(models.Model):
     idArriendo=models.AutoField(primary_key=True, verbose_name='Id arriendo')
-    tipoArriendo=models.CharField(max_length=50,verbose_name='Tipo arriendo')
-    tipoBicicleta=models.CharField(max_length=50,verbose_name='Tipo bicicleta')
+    tipoArriendo=models.ForeignKey(TypeTipoArriendo,on_delete=models.CASCADE,verbose_name='Tipo arriendo')
+    tipoBicicleta=models.ForeignKey(TypeTipoBicicleta,on_delete=models.CASCADE,verbose_name='Tipo bicicleta')
     fechaRetiro=models.DateField(verbose_name='Fecha retiro')
     fechaEntrega=models.DateField(null= True,default=None,verbose_name='Fecha entrega')
     abonoUSD=models.IntegerField(verbose_name='Abono USD')
@@ -47,9 +63,8 @@ class Arriendo(models.Model):
     mailArrendatario=models.CharField(max_length=150,verbose_name='Mail arrendatario')
 
     def __str__(self):
-        return self.tipoBicicleta
+        return self.tipoArriendo
         
-    
 class Reparacion(models.Model):
     idReparacion=models.AutoField(primary_key=True, verbose_name='Id reparacion')
     fechaReparacion=models.DateField(verbose_name='Fecha reparacion')

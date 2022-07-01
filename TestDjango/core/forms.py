@@ -10,11 +10,7 @@ from .models import Producto, Usuario, Arriendo, Reparacion
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-TIPO_ARRIENDO_CHOICES = [
-    ('Paseo','Paseo'),
-    ('Fixie','Fixie'),
-    ('Mountain bike','Mountain bike')
-    ]
+
 
 class RegistrarUsuario(ModelForm):
     class Meta:
@@ -56,7 +52,6 @@ class Arriendo(ModelForm):
             'tipoArriendo',
             'tipoBicicleta',
             'fechaRetiro',
-            'abonoUSD',
             'valorArriendo',
             'cantidad',
             'nombreArrendatario',
@@ -64,10 +59,7 @@ class Arriendo(ModelForm):
             'mailArrendatario'
             ]           
         widgets={
-               
-                'fechaRetiro': forms.SelectDateWidget(),
-                ##'tipoArriendo': forms.CharField(label='Paseo, Fixie ,Mountain bike'),
-                
+                'fechaRetiro': forms.SelectDateWidget() 
             }
 
 
