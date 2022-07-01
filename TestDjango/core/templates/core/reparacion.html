@@ -36,7 +36,7 @@
     
         <!-- Step 1 -->
     <div class="contenedor">    
-        
+        {% load crispy_forms_tags %}
         <div class="row">
             <div class="col-12 col-md-6 offset-md-3">
                 <div class="card">
@@ -46,8 +46,8 @@
                         <p id="description">Los Campos con (*) Son Obligatorios.</p>
                         <hr>
                         <form class="" method="post" action="" enctype="multipart/form-data">
-              
-                        {{ form }}
+                        {% csrf_token %}
+                        {{ form | crispy }}
                   
                             <div class="d-flex justify-content-end">
                                
@@ -59,7 +59,7 @@
                     
                         </form>
                
-
+                        {{mensaje}}
                     </div>
                 </div>
             </div>         

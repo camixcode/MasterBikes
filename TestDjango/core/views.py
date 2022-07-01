@@ -270,5 +270,12 @@ def form_reparacion(request):
     data = {
         'form' : Reparacion()
     }
-
+    if request.method == 'POST':
+        formulario= Reparacion(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            data['mensaje'] = "Solicitud Reparacion ingresada"
+        else:
+            data['form'] = formulario    
+            
     return render(request,'core/reparacion.html',data)

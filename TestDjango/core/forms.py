@@ -72,4 +72,7 @@ class Reparacion(ModelForm):
             'fechaReparacion',
             'valorReparacion'
             ]
+        widgets={
+                'fechaReparacion': forms.SelectDateWidget() 
+            }    
           
