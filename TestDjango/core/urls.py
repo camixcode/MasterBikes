@@ -4,16 +4,18 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from core.Carrito import Carrito
 #from TestDjango.core.models import Producto
+#from TestDjango.core.models import Arriendo,Reparacion
 
 
 
-from .views import Arbusto, agregar_producto, eliminar_producto, registro,home, Contacto,\
+from .views import Arbusto, agregar_producto, eliminar_producto, form_arriendo, registro,home, Contacto,\
     Categoria1, F_Crear_Cuenta,form_mod_usuario,Nosotros,HistoricoCompra,index_home,InicioSesion1,\
     limpiar_carrito,listado_producto, Paypal,PerfilProducto,Producto1,Seguimiento,Tierra,\
     Macetero,index_homeOG, form_usuario,restar_producto, form_producto, Carrito,\
-    form_mod_producto,form_borrar_producto , listado_usuario, form_borrar_usuario,P_Arriendo,Servicios_M,P_Promociones,Admin_E_Servicios
+    form_mod_producto,form_borrar_producto,listado_usuario, form_borrar_usuario,\
+    P_Arriendo,Servicios_M,P_Promociones,Admin_E_Servicios,form_arriendo
 # ,NavBar
-
+    
 
 urlpatterns = [
     path('home1',home , name="Home"),
@@ -33,9 +35,6 @@ urlpatterns = [
 
     path('P_Promociones/', P_Promociones, name="P_Promociones"),
     path('Admin_E_Servicios/', Admin_E_Servicios, name="Admin_E_Servicios"),
-
-
-
     #path('Home/', index_home, name="Home"),
     path('InicioSesion1/', InicioSesion1, name="InicioSesion1"),
     path('listado_producto/', listado_producto, name="listado_producto"),
@@ -56,6 +55,7 @@ urlpatterns = [
     path('form_mod_producto/<id>/', form_mod_producto, name="form_mod_producto"),
     path('form_borrar_producto/<id>/',form_borrar_producto, name="form_borrar_producto"),
     path('form_borrar_usuario/<id>/',form_borrar_usuario, name="form_borrar_usuario"),
+    path('form_arriendo',form_arriendo, name="form_arriendo"),
 
 ]
 

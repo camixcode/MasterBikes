@@ -13,15 +13,11 @@ from xml.dom.minidom import Document
 from xml.parsers.expat import model
 import django
 from django.shortcuts import redirect, render
-from core.forms import RegistrarProducto, RegistrarUsuario , CustomerUserCreationForm, ModificarUsuario, CrearCuentaAdmin
+from core.forms import RegistrarProducto, RegistrarUsuario , CustomerUserCreationForm, ModificarUsuario, CrearCuentaAdmin,Arriendo
 from django.contrib.auth import authenticate, login
 from core.Carrito import Carrito
 from django.contrib import messages
 from django.contrib.auth.models import User 
-
-
-
-
 from . models import Producto,Usuario
 
 
@@ -255,3 +251,17 @@ def registro (request):
 #def NavBar(request):
  #   return render(request, 'core/NavBar.html')  
      
+def form_arriendo(request):
+    datos = {
+        'form': Arriendo()
+    }
+    if request.method == 'POST':
+
+        formmulario = Arriendo(request.POST,files=request.FILES)
+
+        if formmulario.is_valid():
+            formmulario.save()
+            datos['mensaje'] = "Arriendo registrado correctamente"
+        else:
+            datos['form'] = formmulario
+    return render(request, 'core/form_arriendo.html',datos)                          
