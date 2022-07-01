@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from distutils.command.upload import upload
 from django.db import models
 
@@ -30,3 +31,32 @@ class Usuario(models.Model):
     contrasena = models.CharField(max_length=50, verbose_name='contrasena')
     def __str__(self):
         return self.nombreUsuario
+
+class Arriendo(models.Model):
+    idArriendo=models.AutoField(primary_key=True, verbose_name='Id arriendo')
+    tipoArriendo=models.CharField(max_length=50,verbose_name='Tipo arriendo')
+    tipoBicicleta=models.CharField(max_length=50,verbose_name='Tipo bicicleta')
+    fechaRetiro=models.DateField(verbose_name='Fecha retiro')
+    fechaEntrega=models.DateField(null= True,default=None,verbose_name='Fecha entrega')
+    abonoUSD=models.IntegerField(verbose_name='Abono USD')
+    valorArriendo=models.IntegerField(verbose_name='Valor USD')
+    cantidad=models.IntegerField(verbose_name='Cantidad')
+    nombreArrendatario=models.CharField(max_length=200,verbose_name='Nombre arrendatario')
+    rutArrendatario=models.CharField(max_length=50,verbose_name='Rut arrendatario')
+    mailArrendatario=models.CharField(max_length=150,verbose_name='Mail arrendatario')
+
+    def __str__(self):
+        return self.tipoBicicleta
+        
+    
+class Reparacion(models.Model):
+    idReparacion=models.AutoField(primary_key=True, verbose_name='Id reparacion')
+    fechaReparacion=models.DateField(verbose_name='Fecha reparacion')
+    tipoReparacion=models.CharField(max_length=50,verbose_name='Tipo reparacion')
+    detalleReparacion=models.TextField(max_length=500,verbose_name='Detalle reparacion')
+    valorReparacion=models.IntegerField(verbose_name='Valor reparacion')
+    estado=models.CharField(max_length=50,null= True,default=None,verbose_name='Estado')
+    fechaEstado=models.DateField(null= True,default=None,verbose_name='Fecha actualizacion estado')
+
+    def __str__(self):
+        return self.tipoReparacion
