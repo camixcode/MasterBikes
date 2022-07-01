@@ -83,4 +83,4 @@ class Reparacion(models.Model):
     fechaEstado=models.DateField(null= True,default=None,verbose_name='Fecha actualizacion estado')
 
     def __str__(self):
-        return self.tipoReparacion
+        return self.idReparacion

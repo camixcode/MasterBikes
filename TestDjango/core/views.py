@@ -266,10 +266,9 @@ def form_arriendo(request):
             datos['form'] = formmulario
     return render(request, 'core/form_arriendo.html',datos)    
                           
-
 def form_reparacion(request):
-    datos = {
-        'form': Reparacion
+    data = {
+        'form' : Reparacion()
     }
-    
-    return render(request, 'core/form_reparacion.html',datos)
+
+    return render(request,'core/reparacion.html',data)
