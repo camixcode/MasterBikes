@@ -206,7 +206,7 @@ def form_producto(request):
             datos['mensaje'] = "Guardados Correctamente"
     return render(request, 'core/form_producto.html',datos)
 
-def form_producto_arriendo(request):
+def BicicletaArriendo(request):
     datos = {
         'form': BicicletaArriendo()
     }
