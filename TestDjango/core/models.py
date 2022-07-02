@@ -10,8 +10,7 @@ class Categoria(models.Model):
     nombreCategoria = models.CharField(max_length=50,verbose_name='Nombre de la categoria')
 
     def __str__(self):
-        return self.nombreCategoria
-   
+        return self.nombreCategoria  
 
 class Producto(models.Model):
     idProducto = models.AutoField(primary_key=True, verbose_name='Id de producto')
