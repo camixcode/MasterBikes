@@ -21,10 +21,16 @@
         <link rel="stylesheet" href="min.css">
         <link rel="stylesheet" href="stylos.css">
         <link rel="stylesheet" href="popper.min.js">
-        <title>Categoria Productos | Arriendo</title>
+        <title>Categoria Productos</title>
     </head>
     
     <body>
+        <script>
+            function alerta() {
+                alert("Se a enviado su solicitud de reparacion, gracias por su preferencia.")
+                
+            }
+        </script>
         <!--<h1>FLOWERSANDPOWER</h1>-->
         <!--- Navbar Superior-->
          <!--- Navbar Superior-->
@@ -37,35 +43,16 @@
         <!-- Step 1 -->
    <center> <div class="contenedor">    
         {% load crispy_forms_tags %}
-        <div class="row">
-           <div class="col-12 col-md-6 offset-md-3">
-                <div class="card">
-                    <div class="card-body"> 
-
-                        <h3 class="font-weight-light">Registrar Arriendo Bicicleta</h3>
-                        <p id="description">Los Campos con (*) Son Obligatorios.</p>
-                        <hr>
-                        <form class="formulario" method="post" action="" enctype="multipart/form-data">
-              
-                        {% csrf_token %}
-                        {{ form | crispy }}  
-                           <div class="d-flex justify-content-end">
-                 
-                            <input type="submit" class="btn btn-outline-success" id="Crear" value="Arrendar">
-                            &nbsp;
-                            <input type="reset" class="btn btn-outline-success" id="Limpiar" value="Limpiar datos">
-                            </div>
-                    
-                        </form>
-                        {{mensaje}}
-
-                    </div>
-                </div>
-            </div>         
-        </div>
-    </div></center>
+        
     <br>
-
+    <br>
+    <br>
+    <div>
+        {% include "Boleta.html" %}
+    </div>
+    <br>
+    <br>
+    <br>
     <!--- Footer-->
 
     <div>

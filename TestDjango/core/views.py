@@ -21,6 +21,11 @@ from django.contrib import messages
 from django.contrib.auth.models import User 
 from .models import BiciletaArriendo, Producto, Promociones, Usuario
 
+from .models import Producto, Usuario, Arriendo
+from .models import Producto, Promociones, Usuario
+
+
+
 
 # Create your views here.
 def home(request):
@@ -163,7 +168,11 @@ def PerfilProducto(request,id):
         'producto' : Producto.objects.get(idProducto= id)
     }
     
-    return render(request, 'core/PerfilProducto.html',datos)      
+    return render(request, 'core/PerfilProducto.html',datos) 
+
+def boleta_cliente(request):
+    
+    return render(request, 'core/boleta_cliente.html')     
 
 def Seguimiento(request):
     return render(request, 'core/Seguimiento.html')      
@@ -277,10 +286,10 @@ def registro (request):
 #def NavBar(request):
  #   return render(request, 'core/NavBar.html')  
 
-def arriendoForm(request):
-    basearriendos = Arriendo.objects.all()
+def listado_arriendo(request):
+    listado_arriendo = Arriendo.objects.all()
     datos = {
-        'arriendo': basearriendos
+        'listado_arriendo': listado_arriendo
     }
     return render(request, 'core/listado_arriendo.html',datos)
 
@@ -301,15 +310,15 @@ def form_arriendo(request):
     return render(request, 'core/form_arriendo.html',datos)
 
 def form_mod_arriendo(request,id):
-    arriendo = Arriendo.objects.get(idArriendo = id)
-    datos={
-        'form': arriendoForm(instance=arriendo)
+    id_arriendo = Arriendo.objects.get(idArriendo = id)
+    datos = {
+        'form': Arriendo(instance=id_arriendo)
     }
-    if request.method == 'POST':
-        formulario = arriendoForm(data=request.POST, instance= arriendo)
-        if formulario.is_valid():
+    if request.method=='POST':
+        formulario= Arriendo(data=request.POST,instance=id_arriendo)
+        if formulario.is_valid:
             formulario.save()
-            datos['mensaje'] = "Arriendo Modificado correctamente"
+            datos['mensaje']= "producto modificado correctamente"
     return render(request, 'core/form_mod_arriendo.html',datos)
 
                           

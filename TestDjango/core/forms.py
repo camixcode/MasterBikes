@@ -75,6 +75,7 @@ class Arriendo(ModelForm):
             'tipoArriendo',
             'tipoBicicleta',
             'fechaRetiro',
+            'fechaEntrega',
             'valorArriendo',
             'abonoUSD',
             'cantidad',
@@ -85,7 +86,6 @@ class Arriendo(ModelForm):
         widgets={
                 'fechaRetiro': forms.SelectDateWidget() 
             }
-
 
 class Reparacion(ModelForm):
     class Meta:

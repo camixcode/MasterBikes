@@ -52,17 +52,18 @@
                                 <td>Opciones</td>
                                 
                             </tr>
-                            {% for pr in basearriendos %}
+                            {% for pr in listado_arriendo %}
                             <tr>
                                 <td>{{pr.tipoArriendo}}</td>
                                 <td>{{pr.tipoBicicleta}}</td>
                                 <td>{{pr.fechaRetiro}}</td>
-                                <td>{{pr.estadoArriendo}}</td>
+                                <td></td>
                                 <td>{{pr.fechaEntrega}}</td>
                                 <td>{{pr.nombreArrendatario}}</td>                                
                                 <td>{{pr.rutArrendatario}}</td>
                                 <td>{{pr.mailArrendatario}}</td>
-                                <td><a href="/form_mod_arriendo/{{pr.idArriendo}}">Modificar</a> / <a href="/form_mod_arriendo/{{pr.idArriendo}}">Eliminar</a></td>
+                                <td><a href="/form_mod_arriendo/{{pr.idArriendo}}">Modificar</a>
+                                    <a href="/form_mod_arriendo/{{pr.idArriendo}}"></a></td>
                             </tr>
                             {% endfor %}
                         </table>
