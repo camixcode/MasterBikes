@@ -14,12 +14,12 @@ from xml.dom.minidom import Document
 from xml.parsers.expat import model
 import django
 from django.shortcuts import redirect, render
-from core.forms import RegistrarProducto, RegistrarUsuario , CustomerUserCreationForm, ModificarUsuario, CrearCuentaAdmin, Arriendo, Reparacion
+from core.forms import RegistrarProducto, RegistrarUsuario , CustomerUserCreationForm, ModificarUsuario, CrearCuentaAdmin, Arriendo, Reparacion,BiciletaArriendo
 from django.contrib.auth import authenticate, login
 from core.Carrito import Carrito
 from django.contrib import messages
 from django.contrib.auth.models import User 
-from .models import Producto, Promociones, Usuario
+from .models import BiciletaArriendo, Producto, Promociones, Usuario
 
 
 # Create your views here.
@@ -75,12 +75,14 @@ def Servicios_M(request):
 def P_Promociones(request):
     productos =Producto.objects.filter(categoria='bicicleta')
     repuesto =Producto.objects.filter(categoria='repuesto')
+    bicicleta = BiciletaArriendo.objects.all()
     Npromociones = random.randrange(4,6)
     promocion = Promociones.objects.get(idPromocion=Npromociones)
     datos = {
         'productos':productos,
         'promocion': promocion,
         'repuesto' : repuesto,
+        'bicicleta' : bicicleta,
 
     }
     return render(request, 'core/P_Promociones.html',datos)    
@@ -193,7 +195,20 @@ def form_producto(request):
         if formmulario.is_valid():
             formmulario.save()
             datos['mensaje'] = "Guardados Correctamente"
-    return render(request, 'core/form_producto.html',datos)                          
+    return render(request, 'core/form_producto.html',datos)
+
+def form_producto_arriendo(request):
+    datos = {
+        'form': BicicletaArriendo()
+    }
+    if request.method == 'POST':
+
+        formmulario = BicicletaArriendo(request.POST , request.FILES)
+
+        if formmulario.is_valid():
+            formmulario.save()
+            datos['mensaje'] = "Guardados Correctamente"
+    return render(request, 'core/form_producto_arriendo.html',datos)                          
 
 
 def F_Crear_Cuenta(request):

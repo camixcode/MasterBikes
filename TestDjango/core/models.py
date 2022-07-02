@@ -79,6 +79,5 @@ class BiciletaArriendo(models.Model):
     precioProducto = models.IntegerField(verbose_name='Precio de bicicleta')
     imagen = models.ImageField ( upload_to= 'producto', null= True, default=None)
     stock= models.IntegerField(null= True,default=None,verbose_name='Stock')
-
     def __str__(self):
         return self.nombreBicileta
