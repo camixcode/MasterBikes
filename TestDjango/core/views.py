@@ -93,9 +93,9 @@ def P_Promociones(request):
     repuesto =Producto.objects.filter(categoria='repuesto')
     bicicleta = Producto.objects.filter(categoria='arriendo')
     Npromociones = random.randrange(1,6)
-    promocion = Promociones.objects.get(idPromocion=Npromociones)
+    promocion = Promociones.objects.all(idPromocion=Npromociones)
     NpromocionesRep = random.randrange(6,13)
-    promocionRepuesto = Promociones.objects.get(idPromocion=NpromocionesRep)
+    promocionRepuesto = Promociones.objects.all(idPromocion=NpromocionesRep)
     datos = {
         'productos':productos,
         'promocion': promocion,
