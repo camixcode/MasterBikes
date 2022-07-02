@@ -39,9 +39,11 @@ def home(request):
 
 
 def Producto1(request):
-    productos =Producto.objects.all()
+    productos =Producto.objects.filter(categoria='bicicleta')
+    repuesto =Producto.objects.filter(categoria='repuesto')
     datos = {
-        'productos':productos
+        'productos':productos,
+        'repuesto':repuesto,
     }
     return render(request, 'core/Producto1.html', datos)  
 
@@ -80,9 +82,9 @@ def Servicios_M(request):
 def P_Promociones(request):
     productos =Producto.objects.filter(categoria='bicicleta')
     repuesto =Producto.objects.filter(categoria='repuesto')
-    bicicleta = BiciletaArriendo.objects.all()
+    bicicleta = Producto.objects.filter(categoria='arriendo')
     Npromociones = random.randrange(4,6)
-    promocion = Promociones.objects.get(idPromocion=Npromociones)
+    promocion = Promociones.objects.filter(idPromocion=Npromociones)
     datos = {
         'productos':productos,
         'promocion': promocion,
@@ -208,11 +210,11 @@ def form_producto(request):
 
 def form_producto_arriendo(request):
     datos = {
-        'form': BiciletaArriendo()
+        'form': RegistrarProducto()
     }
     if request.method == 'POST':
 
-        formmulario = BiciletaArriendo(request.POST , request.FILES)
+        formmulario = RegistrarProducto(request.POST , request.FILES)
 
         if formmulario.is_valid():
             formmulario.save()

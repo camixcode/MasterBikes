@@ -6,7 +6,7 @@ from tkinter import Widget
 from xml.dom.minidom import Attr
 from django import forms
 from django.forms import ModelForm
-from .models import Producto, Usuario, Arriendo, Reparacion,BiciletaArriendo
+from .models import Producto, Usuario, Arriendo, Reparacion, BiciletaArriendo
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -20,8 +20,8 @@ class RegistrarUsuario(ModelForm):
 class BiciletaArriendo(ModelForm):
 
     class Meta:
-        model = BiciletaArriendo
-        fields =['idBicileta','nombreBicileta','descripcionBicileta','precioProducto','imagen','stock']
+        model = Producto
+        fields =['idProducto','nombreProducto','descripcionProducto','precioProducto','imagen','stock']
 
 class RegistrarProducto(ModelForm):
 
