@@ -13,11 +13,8 @@ from .views import Arbusto, agregar_producto, eliminar_producto, form_arriendo, 
     limpiar_carrito,listado_producto, Paypal,PerfilProducto,Producto1,Seguimiento,Tierra,\
     Macetero,index_homeOG, form_usuario,restar_producto, form_producto, Carrito,\
     form_mod_producto,form_borrar_producto,listado_usuario, form_borrar_usuario,\
-<<<<<<< HEAD
-    P_Arriendo,Servicios_M,P_Promociones,Admin_E_Servicios,form_arriendo,form_reparacion,boleta_cliente
-=======
-    P_Arriendo,Servicios_M,P_Promociones,Admin_E_Servicios,arriendoForm,form_arriendo,form_mod_arriendo,form_reparacion
->>>>>>> 434f6af6aa62e5bab6625b35f0c968e23cf15daa
+    P_Arriendo,Servicios_M,P_Promociones,Admin_E_Servicios,form_arriendo,form_reparacion,boleta_cliente,form_mod_arriendo,arriendoForm
+
 # ,NavBar
     
 
