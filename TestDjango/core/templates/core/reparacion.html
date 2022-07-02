@@ -25,6 +25,12 @@
     </head>
     
     <body>
+        <script>
+            function alerta() {
+                alert("Se a enviado su solicitud de reparacion, gracias por su preferencia.")
+                
+            }
+        </script>
         <!--<h1>FLOWERSANDPOWER</h1>-->
         <!--- Navbar Superior-->
          <!--- Navbar Superior-->
@@ -48,24 +54,26 @@
                         <form class="" method="post" action="" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form | crispy }}
-                  
+                            <br>
+                            <br>
                             <div class="d-flex justify-content-end">
                                
                  
-                            <input type="submit" class="btn btn-outline-success" id="Crear" value="Agendar Reparacion">
+                            <input type="button" onclick="alerta()" class="btn btn-outline-success" id="Crear" value="Agendar Reparacion">
                             &nbsp;
                             <input type="reset" class="btn btn-outline-success" id="Limpiar" value="Limpiar datos"> 
                             </div>
                     
                         </form>
-               
+                        
                         {{mensaje}}
                     </div>
                 </div>
             </div>         
         </div>
     </div></center>
-
+    <br>
+    <br>
     <!--- Footer-->
 
     <div>
