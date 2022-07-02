@@ -89,13 +89,16 @@ def P_Promociones(request):
     productos =Producto.objects.filter(categoria='bicicleta')
     repuesto =Producto.objects.filter(categoria='repuesto')
     bicicleta = Producto.objects.filter(categoria='arriendo')
-    Npromociones = random.randrange(4,6)
-    promocion = Promociones.objects.filter(idPromocion=Npromociones)
+    Npromociones = random.randrange(1,6)
+    promocion = Promociones.objects.get(idPromocion=Npromociones)
+    NpromocionesRep = random.randrange(6,13)
+    promocionRepuesto = Promociones.objects.get(idPromocion=NpromocionesRep)
     datos = {
         'productos':productos,
         'promocion': promocion,
         'repuesto' : repuesto,
         'bicicleta' : bicicleta,
+        'promocionRep': promocionRepuesto,
 
     }
     return render(request, 'core/P_Promociones.html',datos)    
