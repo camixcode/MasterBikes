@@ -71,6 +71,9 @@ def limpiar_carrito(request):
 def Arbusto(request):
     return render(request, 'core/Arbusto.html')
 
+def bicicleta_perso(request):
+    return render(request, 'core/bicicleta_perso.html')
+
 def P_Arriendo(request):
     return render(request, 'core/P_Arriendo.html')
 
