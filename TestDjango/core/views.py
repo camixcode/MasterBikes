@@ -39,9 +39,11 @@ def home(request):
 
 
 def Producto1(request):
-    productos =Producto.objects.all()
+    productos =Producto.objects.filter(categoria='bicicleta')
+    repuesto =Producto.objects.filter(categoria='repuesto')
     datos = {
-        'productos':productos
+        'productos':productos,
+        'repuesto':repuesto,
     }
     return render(request, 'core/Producto1.html', datos)  
 
@@ -69,7 +71,16 @@ def limpiar_carrito(request):
     return redirect("Producto") 
 
 def Arbusto(request):
-    return render(request, 'core/Arbusto.html')
+    productos =Producto.objects.filter(categoria='repuesto')
+
+    datos = {
+        'productos':productos,
+    }
+
+    return render(request, 'core/Arbusto.html',datos)
+
+def bicicleta_perso(request):
+    return render(request, 'core/bicicleta_perso.html')
 
 def P_Arriendo(request):
     return render(request, 'core/P_Arriendo.html')
@@ -80,14 +91,17 @@ def Servicios_M(request):
 def P_Promociones(request):
     productos =Producto.objects.filter(categoria='bicicleta')
     repuesto =Producto.objects.filter(categoria='repuesto')
-    bicicleta = BiciletaArriendo.objects.all()
-    Npromociones = random.randrange(4,6)
+    bicicleta = Producto.objects.filter(categoria='arriendo')
+    Npromociones = random.randrange(1,6)
     promocion = Promociones.objects.get(idPromocion=Npromociones)
+    NpromocionesRep = random.randrange(6,13)
+    promocionRepuesto = Promociones.objects.get(idPromocion=NpromocionesRep)
     datos = {
         'productos':productos,
         'promocion': promocion,
         'repuesto' : repuesto,
         'bicicleta' : bicicleta,
+        'promocionRep': promocionRepuesto,
 
     }
     return render(request, 'core/P_Promociones.html',datos)    
@@ -206,13 +220,13 @@ def form_producto(request):
             datos['mensaje'] = "Guardados Correctamente"
     return render(request, 'core/form_producto.html',datos)
 
-def BicicletaArriendo(request):
+def form_producto_arriendo(request):
     datos = {
-        'form': BiciletaArriendo()
+        'form': RegistrarProducto()
     }
     if request.method == 'POST':
 
-        formmulario = BiciletaArriendo(request.POST , request.FILES)
+        formmulario = RegistrarProducto(request.POST , request.FILES)
 
         if formmulario.is_valid():
             formmulario.save()
@@ -335,3 +349,7 @@ def form_reparacion(request):
             data['form'] = formulario    
             
     return render(request,'core/reparacion.html',data)
+
+
+def DashBoard(request):
+    return render(request, 'core/DashBoard.html')
