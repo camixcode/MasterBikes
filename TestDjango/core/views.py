@@ -338,4 +338,4 @@ def form_reparacion(request):
 
 
 def DashBoard(request):
-    return render(request, 'core/DashBoard.html)
+    return render(request, 'core/DashBoard.html')
