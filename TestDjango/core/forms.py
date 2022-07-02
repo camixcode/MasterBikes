@@ -44,7 +44,24 @@ class CrearCuentaAdmin (UserCreationForm):
     fields=['username',"first_name","last_name","email","is_superuser","password1","password2"]
  
 
-class Arriendo(ModelForm):  
+class Arriendo(ModelForm):
+    TIPO_ARRIENDO_CHOICES=[
+            ('1','Medio día'),
+            ('2','Día Completo'),
+            ('3','Arriendo Semanal'),
+            ('4','Arriendo Mensual')
+    ]
+    TIPO_BICICLETA_CHOICES=[
+            ('1','Bicicleta Paseo / Urbana'),
+            ('2','Bicicleta Fixie'),
+            ('3','Mountain Bike') 
+    ]
+    tipoBicicleta = forms.ChoiceField(choices=TIPO_BICICLETA_CHOICES)
+    tipoArriendo = forms.ChoiceField(choices=TIPO_ARRIENDO_CHOICES)  
+    abonoUSD = forms.IntegerField(initial=50,label='Abono Arriendo (USD)')
+    valorArriendo = forms.IntegerField(initial=18,label='Valor Arriendo (USD)')
+    cantidad = forms.IntegerField(initial=1)
+    mailArrendatario = forms.EmailField()
     class Meta:
         
         model = Arriendo
@@ -52,8 +69,8 @@ class Arriendo(ModelForm):
             'tipoArriendo',
             'tipoBicicleta',
             'fechaRetiro',
-            'abonoUSD'
             'valorArriendo',
+            'abonoUSD',
             'cantidad',
             'nombreArrendatario',
             'rutArrendatario',
