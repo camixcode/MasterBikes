@@ -250,7 +250,15 @@ def registro (request):
 
 #def NavBar(request):
  #   return render(request, 'core/NavBar.html')  
-     
+
+def arriendoForm(request):
+    basearriendos = Arriendo.objects.all()
+    datos = {
+        'arriendo': basearriendos
+    }
+    return render(request, 'core/listado_arriendo.html',datos)
+
+
 def form_arriendo(request):
     datos = {
         'form': Arriendo()
@@ -264,7 +272,20 @@ def form_arriendo(request):
             datos['mensaje'] = "Arriendo registrado correctamente"
         else:
             datos['form'] = formmulario
-    return render(request, 'core/form_arriendo.html',datos)    
+    return render(request, 'core/form_arriendo.html',datos)
+
+def form_mod_arriendo(request,id):
+    arriendo = Arriendo.objects.get(idArriendo = id)
+    datos={
+        'form': arriendoForm(instance=arriendo)
+    }
+    if request.method == 'POST':
+        formulario = arriendoForm(data=request.POST, instance= arriendo)
+        if formulario.is_valid():
+            formulario.save()
+            datos['mensaje'] = "Arriendo Modificado correctamente"
+    return render(request, 'core/form_mod_arriendo.html',datos)
+
                           
 def form_reparacion(request):
     data = {
