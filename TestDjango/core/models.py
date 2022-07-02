@@ -62,3 +62,23 @@ class Reparacion(models.Model):
 
     def __str__(self):
         return self.idReparacion
+
+
+class Promociones(models.Model):
+    idPromocion=models.AutoField(primary_key=True,verbose_name='Id promocion')
+    descuento=models.IntegerField(verbose_name='descuento')
+
+    def __str__(self):
+        return str(self.descuento)
+
+
+class BiciletaArriendo(models.Model):
+    idBicileta = models.AutoField(primary_key=True, verbose_name='Id de bicicleta')
+    nombreBicileta = models.CharField(max_length=50,verbose_name='Nombre del bicicleta')
+    descripcionBicileta = models.CharField(max_length=50,verbose_name='Descripcion de bicicleta')
+    precioProducto = models.IntegerField(verbose_name='Precio de bicicleta')
+    imagen = models.ImageField ( upload_to= 'producto', null= True, default=None)
+    stock= models.IntegerField(null= True,default=None,verbose_name='Stock')
+
+    def __str__(self):
+        return self.nombreBicileta

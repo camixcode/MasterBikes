@@ -4,6 +4,7 @@ from email import message
 from itertools import product
 #from math import prod
 from pyexpat.errors import messages
+import random
 from re import U
 from sqlite3 import DateFromTicks
 from tokenize import Triple
@@ -19,6 +20,8 @@ from core.Carrito import Carrito
 from django.contrib import messages
 from django.contrib.auth.models import User 
 from .models import Producto, Usuario, Arriendo
+from .models import Producto, Promociones, Usuario
+
 
 
 # Create your views here.
@@ -72,7 +75,17 @@ def Servicios_M(request):
     return render(request, 'core/Servicios_M.html')
 
 def P_Promociones(request):
-    return render(request, 'core/P_Promociones.html')    
+    productos =Producto.objects.filter(categoria='bicicleta')
+    repuesto =Producto.objects.filter(categoria='repuesto')
+    Npromociones = random.randrange(4,6)
+    promocion = Promociones.objects.get(idPromocion=Npromociones)
+    datos = {
+        'productos':productos,
+        'promocion': promocion,
+        'repuesto' : repuesto,
+
+    }
+    return render(request, 'core/P_Promociones.html',datos)    
 
 def Contacto(request):
     return render(request, 'core/Contacto.html')
@@ -150,7 +163,11 @@ def PerfilProducto(request,id):
         'producto' : Producto.objects.get(idProducto= id)
     }
     
-    return render(request, 'core/PerfilProducto.html',datos)      
+    return render(request, 'core/PerfilProducto.html',datos) 
+
+def boleta_cliente(request):
+    
+    return render(request, 'core/boleta_cliente.html')     
 
 def Seguimiento(request):
     return render(request, 'core/Seguimiento.html')      
