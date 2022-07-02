@@ -35,10 +35,10 @@
          {%endblock%}
     
         <!-- Step 1 -->
-    <div class="contenedor">    
+   <center> <div class="contenedor">    
         {% load crispy_forms_tags %}
         <div class="row">
-            <div class="col-12 col-md-6 offset-md-3">
+           <div class="col-12 col-md-6 offset-md-3">
                 <div class="card">
                     <div class="card-body"> 
 
@@ -49,11 +49,11 @@
               
                         {% csrf_token %}
                         {{ form | crispy }}  
-                            <div class="d-flex justify-content-end">
+                           <div class="d-flex justify-content-end">
                  
                             <input type="submit" class="btn btn-outline-success" id="Crear" value="Arrendar">
                             &nbsp;
-                            <input type="reset" class="btn btn-outline-success" id="Limpiar" value="Limpiar datos"> 
+                            <input type="reset" class="btn btn-outline-success" id="Limpiar" value="Limpiar datos">
                             </div>
                     
                         </form>
@@ -63,7 +63,8 @@
                 </div>
             </div>         
         </div>
-    </div>
+    </div></center>
+    <br>
 
     <!--- Footer-->
 
