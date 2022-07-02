@@ -71,7 +71,13 @@ def limpiar_carrito(request):
     return redirect("Producto") 
 
 def Arbusto(request):
-    return render(request, 'core/Arbusto.html')
+    productos =Producto.objects.filter(categoria='repuesto')
+
+    datos = {
+        'productos':productos,
+    }
+
+    return render(request, 'core/Arbusto.html',datos)
 
 def P_Arriendo(request):
     return render(request, 'core/P_Arriendo.html')
