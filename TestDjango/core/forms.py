@@ -68,6 +68,7 @@ class ArriendoForm(ModelForm):
     valorArriendo = forms.IntegerField(initial=18,label='Valor Arriendo (USD)')
     cantidad = forms.IntegerField(initial=1)
     mailArrendatario = forms.EmailField()
+    ##fechaEntrega = forms.CharField(required=False)
     class Meta:
         
         model = Arriendo
@@ -84,7 +85,8 @@ class ArriendoForm(ModelForm):
             'mailArrendatario'
             ]           
         widgets={
-                'fechaRetiro': forms.SelectDateWidget() 
+                'fechaRetiro': forms.SelectDateWidget(),
+
             }
 
 class Reparacion(ModelForm):
