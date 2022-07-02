@@ -50,7 +50,7 @@ class CrearCuentaAdmin (UserCreationForm):
     fields=['username',"first_name","last_name","email","is_superuser","password1","password2"]
  
 
-class Arriendo(ModelForm):
+class ArriendoForm(ModelForm):
     TIPO_ARRIENDO_CHOICES=[
             ('1','Medio día'),
             ('2','Día Completo'),
