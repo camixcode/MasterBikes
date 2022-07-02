@@ -32,174 +32,48 @@
     <!--- Productos-->
     <div class="row">
       <div class="col-8">
-    <div class="container mb-5 mt-5">
-        <div class="row row-cols-2 row-cols-md-4 g-2">
-            <div class="col-4">
-                <div class="card w-40 card-border mb-2">
-                    <div class="card h-100">
-                        <center><img src="{% static 'core/img/Arbusto/herramientas1.jpg' %}" alt="10"  width="310"></center>
-                        <div class="card-body">
-                           <center><h5 class="card-title">Kit de seguridad</h5></center>
-                            <a href="{% static 'core/img/Arbusto/herramientas1.jpg' %}" ">ver producto</a>
-                  <p></p>
-                  <p class="card-text ">Kit basico de seguridad.</p>
-                  <p class="card-text ">$21.990</p>
-                  <a href="# " class="btn btn-primary ">Agregar al carrito</a>
-              </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-4 ">
-            <div class="card w-40 card-border mb-2 ">
-            <div class="card h-100 ">
-               <center> <img src="{% static 'core/img/Arbusto/herramientas2.jpg' %}" alt="10"  width="310"></center>
-                <div class="card-body ">
-                  <center><h5 class="card-title ">Par de aros</h5></center>
-                  <a href="{% static 'core/img/Arbusto/herramientas2.jpg' %}">ver producto</a>
-                  <p></p>
-                  <p class="card-text ">Par de aros negro para bicicletas de velocidad.</p>
-                  <p class="card-text ">$51.990</p>
-                  <a href="# " class="btn btn-primary ">Agregar al carrito</a>
-              </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-4 ">
-            <div class="ccard w-40 card-border mb-2 ">
-            <div class="card h-100 ">
-                <center><img src="{% static 'core/img/Arbusto/herramientas3.jpg' %}" alt="10"  width="380"></center>
-                <div class="card-body ">
-                  <center><h5 class="card-title ">Bolso trasero </h5></center>
-                  <a href="{% static 'core/img/Arbusto/herramientas3.jpg' %}" alt="..."  >ver producto</a>
-                  <p></p>
-                  <p class="card-text ">Bolso negro,para la lluvia.</p>
-                  <p class="card-text ">$21.990</p>
-                  <a href="# " class="btn btn-primary ">Agregar al carrito</a>
-              </div>
-              </div>
-            </div>
-          </div>
-      </div>    
-    </div> 
-    <div class="container mb-5 mt-5">
-      <div class="row row-cols-2 row-cols-md-4 g-2">
-          <div class="col-4">
-              <div class="card w-40 card-border mb-2">
-                  <div class="card h-100">
-                      <center><img src="{% static 'core/img/Arbusto/herramientas4.jpg' %}" alt="10"  width="285"></center>
+          <div class="row">
+              {%for pr in productos %}
+              
+              <div class="col-md-3 col-sm-12 col-lg-4">
+                  <br><br><br>
+                  <div class="card" style="width: 18rem;">
+                      {% if pr.imagen == '' %} 
+                      <img src="{% static 'core/img/Flowers.png' %}" style="width: 100% ; " class="card-img-top " alt="{{pr.nombreProducto}} ">
+                          <div class="card-body">
+                              <!---<h5 class="card-title ">{{pr.idProducto}}</h5>-->
+                              <p class="card-text "> Nombre de Producto: <br>{{pr.nombreProducto}}</p>
+                              <p class="card-text "> Precio: <br>${{pr.precioProducto}}</p>
+                              <a href=" http://127.0.0.1:8000/agregar_producto/{{pr.idProducto}} " class="btn btn-primary">
+                                   Agregar a Carrito</a>
+                                   <a href=" http://127.0.0.1:8000/PerfilProducto/{{pr.idProducto}} " class="btn btn-primary">
+                                      Ver detalle</a>
+                          </div>
+                      {%else%}
+                      <img src="{{pr.imagen.url}}" style="width: 100% ; " class="card-img-top " alt="{{pr.nombreProducto}} ">
                       <div class="card-body">
-                         <center><h5 class="card-title">Rejilla para bicicleta</h5></center>
-                          <a href="{% static 'core/img/Arbusto/herramientas4.jpg' %}" ">ver producto</a>
-                <p></p>
-                <p class="card-text ">Rejilla para bicicleta de color negro, para todo tipo de bicicletas.</p>
-                <p class="card-text ">$31.990</p>
-                <a href="# " class="btn btn-primary ">Agregar al carrito</a>
-            </div>
-            </div>
+                          <!---<h5 class="card-title ">{{pr.idProducto}}</h5>-->
+                          <p class="card-text "> Nombre de Producto: <br>{{pr.nombreProducto}}</p>
+                          <p class="card-text "> Precio: <br>${{pr.precioProducto}}</p>
+                          <a href=" http://127.0.0.1:8000/agregar_producto/{{pr.idProducto}} " class="btn btn-primary">
+                               Agregar a Carrito</a>
+                          <a href=" http://127.0.0.1:8000/PerfilProducto/{{pr.idProducto}} " class="btn btn-primary">
+                                  Ver detalle</a>
+                      </div>
+                      {%endif%} 
+                  </div>
+              </div>
+              
+              {% endfor %}
           </div>
-        </div>
+      </div>
+      <div class="col-4 ">
+          {% include "BCarrito.html " %}
+      </div>
 
 
-        <div class="col-4 ">
-          <div class="card w-40 card-border mb-2 ">
-          <div class="card h-100 ">
-             <center> <img src="{% static 'core/img/Arbusto/herramientas5.jpg' %}" alt="10"  width="400"></center>
-              <div class="card-body ">
-                <center><h5 class="card-title ">Multiherramientas allen</h5></center>
-                <a href="{% static 'core/img/Arbusto/herramientas5.jpg' %}">ver producto</a>
-                <p></p>
-                <p class="card-text ">Multiherramientas para Bicicletas:
-                   Llave allen 1.5, 2, 3, 4, 5, 6 mm,
-                  Destornillador cruz y paleta,
-                  Corona 8, 10 y 15 mm,
-                  Dados 8, 9 y 10 mm,
-                  ,troncha cadena y desmontadorde neumaticos.
-                  </p>
-                <p class="card-text ">$51.990</p>
-                <a href="# " class="btn btn-primary ">Agregar al carrito</a>
-            </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-4 ">
-          <div class="ccard w-40 card-border mb-2 ">
-          <div class="card h-100 ">
-              <center><img src="{% static 'core/img/Arbusto/herramientas6.jpg' %}" alt="10"  width="295"></center>
-              <div class="card-body ">
-                <center><h5 class="card-title ">Kit basico 2</h5></center>
-                <a href="{% static 'core/img/Arbusto/herramientas6.jpg' %}" alt="..."  >ver producto</a>
-                <p></p>
-                <p class="card-text ">Kit basico 2 con luces y acsesorios.</p>
-                <p class="card-text ">$21.990</p>
-                <a href="# " class="btn btn-primary ">Agregar al carrito</a>
-            </div>
-            </div>
-          </div>
-        </div>
-    </div>    
+      
   </div>
-  <div class="container mb-5 mt-5">
-    <div class="row row-cols-2 row-cols-md-4 g-2">
-        <div class="col-4">
-            <div class="card w-40 card-border mb-2">
-                <div class="card h-100">
-                    <center><img src="{% static 'core/img/Arbusto/herramientas7.jpg' %}" alt="10"  width="310"></center>
-                    <div class="card-body">
-                       <center><h5 class="card-title">Candado de seguridad</h5></center>
-                        <a href="{% static 'core/img/Arbusto/herramientas7.jpg' %}" ">ver producto</a>
-              <p></p>
-              <p class="card-text ">Candado de seguridad con Clave L50115Bk.</p>
-              <p class="card-text ">$18.990</p>
-              <a href="# " class="btn btn-primary ">Agregar al carrito</a>
-          </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col-4 ">
-        <div class="card w-40 card-border mb-2 ">
-        <div class="card h-100 ">
-           <center> <img src="{% static 'core/img/Arbusto/herramientas8.jpg' %}" alt="10"  width="310"></center>
-            <div class="card-body ">
-              <center><h5 class="card-title ">Bombin</h5></center>
-              <a href="{% static 'core/img/Arbusto/herramientas8.jpg' %}">ver producto</a>
-              <p></p>
-              <p class="card-text ">Bombin portable de color gris.</p>
-              <p class="card-text ">$11.990</p>
-              <a href="# " class="btn btn-primary ">Agregar al carrito</a>
-          </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-4 ">
-        <div class="ccard w-40 card-border mb-2 ">
-        <div class="card h-100 ">
-            <center><img src="{% static 'core/img/Arbusto/herramientas9.jpg' %}" alt="10"  width="310"></center>
-            <div class="card-body ">
-              <center><h5 class="card-title ">Kit de reparacion</h5></center>
-              <a href="{% static 'core/img/Arbusto/herramientas9.jpg' %}" alt="..."  >ver producto</a>
-              <p></p>
-              <p class="card-text ">Parches, bombin y pegamento.</p>
-              <p class="card-text ">$13.990</p>
-              <a href="# " class="btn btn-primary ">Agregar al carrito</a>
-          </div>
-          </div>
-        </div>
-      </div>
-  </div>    
-</div> 
-</div> 
-<div class="col-4 ">
-  <br><br><br>
-  {% include "BCarrito.html " %}
-</div>
-</div> 
    
    
     <!--- Footer-->
