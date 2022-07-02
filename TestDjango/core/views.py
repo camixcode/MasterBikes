@@ -4,6 +4,7 @@ from email import message
 from itertools import product
 #from math import prod
 from pyexpat.errors import messages
+import random
 from re import U
 from sqlite3 import DateFromTicks
 from tokenize import Triple
@@ -18,7 +19,7 @@ from django.contrib.auth import authenticate, login
 from core.Carrito import Carrito
 from django.contrib import messages
 from django.contrib.auth.models import User 
-from .models import Producto, Usuario
+from .models import Producto, Promociones, Usuario
 
 
 # Create your views here.
@@ -72,7 +73,17 @@ def Servicios_M(request):
     return render(request, 'core/Servicios_M.html')
 
 def P_Promociones(request):
-    return render(request, 'core/P_Promociones.html')    
+    productos =Producto.objects.filter(categoria='bicicleta')
+    repuesto =Producto.objects.filter(categoria='repuesto')
+    Npromociones = random.randrange(4,6)
+    promocion = Promociones.objects.get(idPromocion=Npromociones)
+    datos = {
+        'productos':productos,
+        'promocion': promocion,
+        'repuesto' : repuesto,
+
+    }
+    return render(request, 'core/P_Promociones.html',datos)    
 
 def Contacto(request):
     return render(request, 'core/Contacto.html')
@@ -254,7 +265,15 @@ def registro (request):
 
 #def NavBar(request):
  #   return render(request, 'core/NavBar.html')  
-     
+
+def arriendoForm(request):
+    basearriendos = Arriendo.objects.all()
+    datos = {
+        'arriendo': basearriendos
+    }
+    return render(request, 'core/listado_arriendo.html',datos)
+
+
 def form_arriendo(request):
     datos = {
         'form': Arriendo()
@@ -268,7 +287,20 @@ def form_arriendo(request):
             datos['mensaje'] = "Arriendo registrado correctamente"
         else:
             datos['form'] = formmulario
-    return render(request, 'core/form_arriendo.html',datos)    
+    return render(request, 'core/form_arriendo.html',datos)
+
+def form_mod_arriendo(request,id):
+    arriendo = Arriendo.objects.get(idArriendo = id)
+    datos={
+        'form': arriendoForm(instance=arriendo)
+    }
+    if request.method == 'POST':
+        formulario = arriendoForm(data=request.POST, instance= arriendo)
+        if formulario.is_valid():
+            formulario.save()
+            datos['mensaje'] = "Arriendo Modificado correctamente"
+    return render(request, 'core/form_mod_arriendo.html',datos)
+
                           
 def form_reparacion(request):
     data = {

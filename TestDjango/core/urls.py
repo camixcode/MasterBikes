@@ -13,7 +13,11 @@ from .views import Arbusto, agregar_producto, eliminar_producto, form_arriendo, 
     limpiar_carrito,listado_producto, Paypal,PerfilProducto,Producto1,Seguimiento,Tierra,\
     Macetero,index_homeOG, form_usuario,restar_producto, form_producto, Carrito,\
     form_mod_producto,form_borrar_producto,listado_usuario, form_borrar_usuario,\
+<<<<<<< HEAD
     P_Arriendo,Servicios_M,P_Promociones,Admin_E_Servicios,form_arriendo,form_reparacion,boleta_cliente
+=======
+    P_Arriendo,Servicios_M,P_Promociones,Admin_E_Servicios,arriendoForm,form_arriendo,form_mod_arriendo,form_reparacion
+>>>>>>> 434f6af6aa62e5bab6625b35f0c968e23cf15daa
 # ,NavBar
     
 
@@ -55,7 +59,9 @@ urlpatterns = [
     path('form_mod_producto/<id>/', form_mod_producto, name="form_mod_producto"),
     path('form_borrar_producto/<id>/',form_borrar_producto, name="form_borrar_producto"),
     path('form_borrar_usuario/<id>/',form_borrar_usuario, name="form_borrar_usuario"),
+    path('listado_arriendo',arriendoForm, name="listado_arriendo"),
     path('form_arriendo',form_arriendo, name="form_arriendo"),
+    path('form_mod_arriendo',form_mod_arriendo, name="form_mod_arriendo"),
     path('form_reparacion',form_reparacion, name="form_reparacion"),
     path('boleta_cliente',boleta_cliente, name="boleta_cliente" ),
 

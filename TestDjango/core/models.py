@@ -1,6 +1,7 @@
 from ast import Delete
 from asyncio.windows_events import NULL
 from distutils.command.upload import upload
+from tkinter.tix import Tree
 from django.db import models
 
 # Create your models here.
@@ -45,6 +46,7 @@ class Arriendo(models.Model):
     nombreArrendatario=models.CharField(max_length=200,verbose_name='Nombre arrendatario')
     rutArrendatario=models.CharField(max_length=50,verbose_name='Rut arrendatario')
     mailArrendatario=models.CharField(max_length=150,verbose_name='Mail arrendatario')
+    estadoArriendo=models.CharField(max_length=50,null=True,verbose_name='Estado Arriendo')
 
     def __str__(self):
         return self.idArriendo
@@ -60,3 +62,23 @@ class Reparacion(models.Model):
 
     def __str__(self):
         return self.idReparacion
+
+
+class Promociones(models.Model):
+    idPromocion=models.AutoField(primary_key=True,verbose_name='Id promocion')
+    descuento=models.IntegerField(verbose_name='descuento')
+
+    def __str__(self):
+        return str(self.descuento)
+
+
+class BiciletaArriendo(models.Model):
+    idBicileta = models.AutoField(primary_key=True, verbose_name='Id de bicicleta')
+    nombreBicileta = models.CharField(max_length=50,verbose_name='Nombre del bicicleta')
+    descripcionBicileta = models.CharField(max_length=50,verbose_name='Descripcion de bicicleta')
+    precioProducto = models.IntegerField(verbose_name='Precio de bicicleta')
+    imagen = models.ImageField ( upload_to= 'producto', null= True, default=None)
+    stock= models.IntegerField(null= True,default=None,verbose_name='Stock')
+
+    def __str__(self):
+        return self.nombreBicileta
