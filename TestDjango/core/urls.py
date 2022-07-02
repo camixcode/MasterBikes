@@ -14,7 +14,7 @@ from .views import Arbusto, agregar_producto, eliminar_producto, form_arriendo, 
     Macetero,index_homeOG, form_usuario,restar_producto, form_producto, Carrito,\
     form_mod_producto,form_borrar_producto,listado_usuario, form_borrar_usuario,\
     P_Arriendo,Servicios_M,P_Promociones,Admin_E_Servicios,listado_arriendo,form_arriendo,form_mod_arriendo,form_reparacion,\
-    form_producto_arriendo
+    BicicletaArriendo
 # ,NavBar
     
 
@@ -29,7 +29,7 @@ urlpatterns = [
     path('form_mod_usuario/<id>', form_mod_usuario, name="form_mod_usuario"),
     path('form_usuario/', form_usuario, name="form_usuario"),
     path('form_producto/', form_producto, name="form_producto"),
-    path('form_producto_arriendo/', form_producto_arriendo, name="form_producto_arriendo"),
+    path('form_producto_arriendo/', BicicletaArriendo, name="form_producto_arriendo"),
 
     path('login',Carrito),
     path('P_Arriendo/', P_Arriendo, name="P_Arriendo"),
