@@ -150,7 +150,11 @@ def PerfilProducto(request,id):
         'producto' : Producto.objects.get(idProducto= id)
     }
     
-    return render(request, 'core/PerfilProducto.html',datos)      
+    return render(request, 'core/PerfilProducto.html',datos) 
+
+def boleta_cliente(request):
+    
+    return render(request, 'core/boleta_cliente.html')     
 
 def Seguimiento(request):
     return render(request, 'core/Seguimiento.html')      
