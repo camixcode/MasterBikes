@@ -105,57 +105,30 @@
             </div>
         </div></center>
 
-        <div class="row row-cols-2 row-cols-md-4 g-2">
-            <div class="col-4">
-                <div class="card w-40 card-border mb-2">
-                    <div class="card h-100">
-                        <center><img src="{% static 'core/img/bicicleta4.jpg' %}"  width="335" alt="..."></center>
-                        <div class="card-body">
-                            <center><h5 class="card-title">Oxford</h5></center>
-                            <a href="{% static 'core/img/bicicleta4.jpg' %}">ver producto</a>
-                            <p></p>
-                            <p class="card-text">Bicicleta infantil Oxford aro 20</p>
-                            <p class="card-text">$22.990</p>
-                            <p class="card-text">Con cupon de descuento</p>
-                            <a href="#" class="btn btn-primary">Arrendar</a>
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    {%for pr in bicicleta %}
+                    <div class="col-md-3 col-sm-12 col-lg-4">
+                        <div class="card" style="width: 18rem;">
+                            
+                            <img src="{{pr.imagen.url}}" style="width: 100% ; " class="card-img-top " alt="{{pr.nombreProducto}} ">
+                            <div class="card-body">
+                                <!---<h5 class="card-title ">{{pr.idProducto}}</h5>-->
+                                <p class="card-text "> Nombre de Producto: <br>{{pr.nombreBicleta}}</p>
+                                <p class="card-text "> Precio: <br>${{pr.precioProducto}}</p>
+                                <p class="card-text "> Precio con descuento: {{promocion}} <br></p>
+                      
+                                <a href="# " class="btn btn-primary">
+                                     Arrendar</a>
+                                
+                            </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
-
-            <div class="col-4">
-                <div class="card w-40 card-border mb-2">
-                    <div class="card h-100">
-                        <center><img src="{% static 'core/img/bicicleta5.jpg' %}" width="500" alt="..."></center>
-                        <div class="card-body">
-                            <center><h5 class="card-title">Yerka</h5></center>
-                            <a href="{% static 'core/img/bicicleta5.jpg' %}">ver producto</a>
-                            <p></p>
-                            <p class="card-text">Bicicleta Yerka V3(S) color turquesa</p>
-                            <p class="card-text">$20.000</p>
-                            <p class="card-text">Con cupon de descuento</p>
-                            <a href="#" class="btn btn-primary">Arrendar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="ccard w-40 card-border mb-2">
-                    <div class="card h-100">
-                        <center><img src="{% static 'core/img/bicicleta6.jpg' %}"  width="440" alt="..."></center>
-                        <div class="card-body">
-                            <center><h5 class="card-title">Canyon</h5></center>
-                            <a href="{% static 'core/img/bicicleta6.jpg' %}">ver producto</a>
-                            <p></p>
-                            <p class="card-text">DT Swiss P 1800 Spline db, 12-speed, bicicleta de competicion,
-                                fibra de carbono a medida,shimano Ultegra DI2 R8150 </p>
-                            <p class="card-text">$18.990</p>
-                            <p class="card-text">Con cupon de descuento</p>
-                            <a href="#" class="btn btn-primary">Arrendar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
 
         <center><div class="col-4">
@@ -168,7 +141,7 @@
             </div>
         </div></center>
 
-        <<div class="row">
+        <div class="row">
             <div class="col-12">
                 <div class="row">
                     {%for pr in repuesto %}
