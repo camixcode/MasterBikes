@@ -335,3 +335,7 @@ def form_reparacion(request):
             data['form'] = formulario    
             
     return render(request,'core/reparacion.html',data)
+
+
+def DashBoard(request):
+    return render(request, 'core/DashBoard.html)
