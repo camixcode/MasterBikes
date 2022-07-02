@@ -208,11 +208,11 @@ def form_producto(request):
 
 def form_producto_arriendo(request):
     datos = {
-        'form': BicicletaArriendo()
+        'form': BiciletaArriendo()
     }
     if request.method == 'POST':
 
-        formmulario = BicicletaArriendo(request.POST , request.FILES)
+        formmulario = BiciletaArriendo(request.POST , request.FILES)
 
         if formmulario.is_valid():
             formmulario.save()
