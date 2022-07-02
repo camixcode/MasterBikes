@@ -8,12 +8,12 @@ from core.Carrito import Carrito
 
 
 
-from .views import Arbusto, agregar_producto, eliminar_producto, form_arriendo, registro,home, Contacto,\
+from .views import Arbusto, agregar_producto, eliminar_producto, form_arriendo, listado_arriendo, registro,home, Contacto,\
     Categoria1, F_Crear_Cuenta,form_mod_usuario,Nosotros,HistoricoCompra,index_home,InicioSesion1,\
     limpiar_carrito,listado_producto, Paypal,PerfilProducto,Producto1,Seguimiento,Tierra,\
     Macetero,index_homeOG, form_usuario,restar_producto, form_producto, Carrito,\
     form_mod_producto,form_borrar_producto,listado_usuario, form_borrar_usuario,\
-    P_Arriendo,Servicios_M,P_Promociones,Admin_E_Servicios,arriendoForm,form_arriendo,form_mod_arriendo,form_reparacion,\
+    P_Arriendo,Servicios_M,P_Promociones,Admin_E_Servicios,listado_arriendo,form_arriendo,form_mod_arriendo,form_reparacion,\
     form_producto_arriendo
 # ,NavBar
     
@@ -58,7 +58,7 @@ urlpatterns = [
     path('form_mod_producto/<id>/', form_mod_producto, name="form_mod_producto"),
     path('form_borrar_producto/<id>/',form_borrar_producto, name="form_borrar_producto"),
     path('form_borrar_usuario/<id>/',form_borrar_usuario, name="form_borrar_usuario"),
-    path('listado_arriendo',arriendoForm, name="listado_arriendo"),
+    path('listado_arriendo',listado_arriendo, name="listado_arriendo"),
     path('form_arriendo',form_arriendo, name="form_arriendo"),
     path('form_mod_arriendo',form_mod_arriendo, name="form_mod_arriendo"),
     path('form_reparacion',form_reparacion, name="form_reparacion"),
