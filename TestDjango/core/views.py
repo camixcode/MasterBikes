@@ -79,6 +79,9 @@ def Arbusto(request):
 
     return render(request, 'core/Arbusto.html',datos)
 
+def bicicleta_perso(request):
+    return render(request, 'core/bicicleta_perso.html')
+
 def P_Arriendo(request):
     return render(request, 'core/P_Arriendo.html')
 
