@@ -87,6 +87,43 @@
         <div class="col-4 ">
             {% include "BCarrito.html " %}
         </div>
+
+        <div class="col-8">
+            <div class="row">
+                {%for pr in repuesto %}
+                
+                <div class="col-md-3 col-sm-12 col-lg-4">
+                    <br><br><br>
+                    <div class="card" style="width: 18rem;">
+                        {% if pr.imagen == '' %} 
+                        <img src="{% static 'core/img/Flowers.png' %}" style="width: 100% ; " class="card-img-top " alt="{{pr.nombreProducto}} ">
+                            <div class="card-body">
+                                <!---<h5 class="card-title ">{{pr.idProducto}}</h5>-->
+                                <p class="card-text "> Nombre de Producto: <br>{{pr.nombreProducto}}</p>
+                                <p class="card-text "> Precio: <br>${{pr.precioProducto}}</p>
+                                <a href=" http://127.0.0.1:8000/agregar_producto/{{pr.idProducto}} " class="btn btn-primary">
+                                     Agregar a Carrito</a>
+                                     <a href=" http://127.0.0.1:8000/PerfilProducto/{{pr.idProducto}} " class="btn btn-primary">
+                                        Ver detalle</a>
+                            </div>
+                        {%else%}
+                        <img src="{{pr.imagen.url}}" style="width: 100% ; " class="card-img-top " alt="{{pr.nombreProducto}} ">
+                        <div class="card-body">
+                            <!---<h5 class="card-title ">{{pr.idProducto}}</h5>-->
+                            <p class="card-text "> Nombre de Producto: <br>{{pr.nombreProducto}}</p>
+                            <p class="card-text "> Precio: <br>${{pr.precioProducto}}</p>
+                            <a href=" http://127.0.0.1:8000/agregar_producto/{{pr.idProducto}} " class="btn btn-primary">
+                                 Agregar a Carrito</a>
+                            <a href=" http://127.0.0.1:8000/PerfilProducto/{{pr.idProducto}} " class="btn btn-primary">
+                                    Ver detalle</a>
+                        </div>
+                        {%endif%} 
+                    </div>
+                </div>
+                
+                {% endfor %}
+            </div>
+        </div>
         
     </div>
 
