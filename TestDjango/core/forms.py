@@ -89,7 +89,7 @@ class ArriendoForm(ModelForm):
 
             }
 
-class Reparacion(ModelForm):
+class ReparacionForm(ModelForm):
     class Meta:
         model = Reparacion
         fields =[
