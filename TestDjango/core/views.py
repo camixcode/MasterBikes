@@ -14,13 +14,12 @@ from xml.dom.minidom import Document
 from xml.parsers.expat import model
 import django
 from django.shortcuts import redirect, render
-from core.forms import RegistrarProducto, RegistrarUsuario , CustomerUserCreationForm, ModificarUsuario, CrearCuentaAdmin, Arriendo, Reparacion,BiciletaArriendo
+from core.forms import RegistrarProducto, RegistrarUsuario , CustomerUserCreationForm, ModificarUsuario, CrearCuentaAdmin, ArriendoForm, ReparacionForm,BiciletaArriendo
 from django.contrib.auth import authenticate, login
 from core.Carrito import Carrito
 from django.contrib import messages
 from django.contrib.auth.models import User 
-from .models import BiciletaArriendo, Producto, Promociones, Usuario
-
+from .models import BiciletaArriendo, Producto, Promociones, Reparacion, Usuario
 from .models import Producto, Usuario, Arriendo
 from .models import Producto, Promociones, Usuario
 
@@ -310,18 +309,20 @@ def listado_arriendo(request):
 
 def form_arriendo(request):
     datos = {
-        'form': Arriendo()
+        'form': ArriendoForm()
     }
-    if request.method == 'POST':
 
-        formmulario = Arriendo(request.POST,files=request.FILES)
-
-        if formmulario.is_valid():
-            formmulario.save()
-            datos['mensaje'] = "Arriendo registrado correctamente"
-        else:
-            datos['form'] = formmulario
+    if request.method=='POST':
+        formulario= ArriendoForm(request.POST, files=request.FILES)
+        if formulario.is_valid:
+            formulario.save()
+            datos['mensaje']= "Arriendo ingresado correctamente"
+        else :
+            datos["form"] = formulario
     return render(request, 'core/form_arriendo.html',datos)
+
+
+    
 
 def form_mod_arriendo(request,id):
     id_arriendo = Arriendo.objects.get(idArriendo = id)
@@ -338,10 +339,10 @@ def form_mod_arriendo(request,id):
                           
 def form_reparacion(request):
     data = {
-        'form' : Reparacion()
+        'form' : ReparacionForm()
     }
     if request.method == 'POST':
-        formulario= Reparacion(request.POST)
+        formulario= ReparacionForm(request.POST)
         if formulario.is_valid():
             formulario.save()
             data['mensaje'] = "Solicitud Reparacion ingresada"
@@ -353,3 +354,10 @@ def form_reparacion(request):
 
 def DashBoard(request):
     return render(request, 'core/DashBoard.html')
+
+def listado_reparacion(request):
+    listado_reparacion = Reparacion.objects.all()
+    datos = {
+        'listado_reparacion': listado_reparacion
+    }
+    return render(request, 'core/listado_reparacion.html',datos)    

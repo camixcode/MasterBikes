@@ -50,7 +50,7 @@ class CrearCuentaAdmin (UserCreationForm):
     fields=['username',"first_name","last_name","email","is_superuser","password1","password2"]
  
 
-class Arriendo(ModelForm):
+class ArriendoForm(ModelForm):
     TIPO_ARRIENDO_CHOICES=[
             ('1','Medio día'),
             ('2','Día Completo'),
@@ -68,6 +68,7 @@ class Arriendo(ModelForm):
     valorArriendo = forms.IntegerField(initial=18,label='Valor Arriendo (USD)')
     cantidad = forms.IntegerField(initial=1)
     mailArrendatario = forms.EmailField()
+    ##fechaEntrega = forms.CharField(required=False)
     class Meta:
         
         model = Arriendo
@@ -84,10 +85,11 @@ class Arriendo(ModelForm):
             'mailArrendatario'
             ]           
         widgets={
-                'fechaRetiro': forms.SelectDateWidget() 
+                'fechaRetiro': forms.SelectDateWidget(),
+
             }
 
-class Reparacion(ModelForm):
+class ReparacionForm(ModelForm):
     class Meta:
         model = Reparacion
         fields =[
